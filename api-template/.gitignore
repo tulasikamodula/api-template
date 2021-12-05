@@ -54,3 +54,6 @@ catalog/
 
 #Mule
 .mule/
+
+#MAc
+.DS_Store
