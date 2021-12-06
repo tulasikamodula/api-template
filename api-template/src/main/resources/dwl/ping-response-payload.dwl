@@ -7,5 +7,6 @@ output application/json
 {
 	status: "OK",
 	apiName: p("api.name") default "",
-	apiVersion: p("api.version") default ""
+	apiVersion: p("api.version") default "",
+	(dependencies: vars.dependencyList) if(vars.dependencyList != null)
 } 

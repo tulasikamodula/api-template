@@ -17,7 +17,7 @@
 		<app.runtime>4.4.0</app.runtime>
 		<mule.maven.plugin.version>3.5.2</mule.maven.plugin.version>
 		<mule.version>4.4.0</mule.version>
-		<mule.tools.version>1.2</mule.tools.version>
+		<mule.tools.version>1.8</mule.tools.version>
 		<munit.version>2.3.6</munit.version>
 	</properties>
 
@@ -59,7 +59,12 @@
 				<configuration>
 					<coverage>
 						<runCoverage>true</runCoverage>
+						<failBuild>false</failBuild>
+						<requiredApplicationCoverage>0</requiredApplicationCoverage>
+						<requiredResourceCoverage>0</requiredResourceCoverage>
+						<requiredFlowCoverage>0</requiredFlowCoverage>
 						<formats>
+							<format>console</format>
 							<format>html</format>
 						</formats>
 					</coverage>
@@ -69,6 +74,12 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
+				<!-- <configuration>
+					<compilerArgs>
+						<args>-parameters</args>
+					</compilerArgs>
+					<target>1.8</target>
+				</configuration> -->
 				<configuration>
 					<compilerArgs>
 						<args>-parameters</args>

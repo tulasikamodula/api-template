@@ -24,7 +24,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<set-variable value="200" doc:name="httpStatus" doc:id="66a989d7-878a-487a-99bb-50dc8dc07edc" variableName="httpStatus"/>
 	</sub-flow>
 	<sub-flow name="ping_check-dependencies" doc:id="bdf9dc6e-ae10-4acf-94e8-ccc701d918ee" >
-		<set-payload value='#[""]' doc:name="Set Payload" doc:id="208d80ba-768f-4967-96a2-d445c08eb570" />
+		<set-payload value='#["No Dependencies	"]' doc:name="Set Payload" doc:id="208d80ba-768f-4967-96a2-d445c08eb570" />
 	</sub-flow>
 		
 	
