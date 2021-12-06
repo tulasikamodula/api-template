@@ -16,5 +16,6 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
 	<error-handler-plugin:config name="error_handler_plugin_config" doc:name="Error Handler Plugin Config" doc:id="4abe4f7d-df39-4e9e-a183-5cabb14d89d7" />
 	<global-property doc:name="Global Property" doc:id="2ba037c3-3033-4c21-8b84-b03d60a75b6a" name="mule.env" value="local" />
 	<global-property doc:name="Global Property" doc:id="fc6b6fdd-eb52-4bc0-99b4-ce23789317d8" name="mule.key" value="Salesforce123456" />
+	<configuration doc:name="Configuration" doc:id="ed5bb9ba-527e-4580-a945-000ef44dc490" defaultErrorHandler-ref="Error_Handler" />
     
 </mule>

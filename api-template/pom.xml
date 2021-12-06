@@ -4,7 +4,7 @@
 
 	<groupId>1f3581c4-f166-4d42-9052-595da11542df</groupId>
 	<artifactId>api-template</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.0</version>
 	<packaging>mule-application</packaging>
 
 	<name>api-template</name>
@@ -13,9 +13,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<app.runtime>4.2.0</app.runtime>
+		<app.runtime>4.4.0</app.runtime>
 		<mule.maven.plugin.version>3.5.2</mule.maven.plugin.version>
-		<mule.version>3.9.0</mule.version>
+		<mule.version>4.4.0</mule.version>
 		<mule.tools.version>1.2</mule.tools.version>
 		<munit.version>2.3.6</munit.version>
 	</properties>
@@ -40,17 +40,6 @@
 				<configuration>
 					<filterAppDirectory>true</filterAppDirectory>
 					<classifier>mule-application</classifier>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
-				<configuration>
-					<compilerArgs>
-						<args>-parameters</args>
-					</compilerArgs>
-					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -158,8 +147,8 @@
 	</distributionManagement>
 	<repositories>
 		<repository>
-			<id>anypoint-exchange</id>
-			<name>Anypoint Exchange</name>
+			<id>anypoint-exchange-v2</id>
+			<name>Anypoint Exchange V2</name>
 			<url>https://maven.anypoint.mulesoft.com/api/v2/maven</url>
 			<layout>default</layout>
 		</repository>
