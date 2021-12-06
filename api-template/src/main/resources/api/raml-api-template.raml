@@ -1,0 +1,22 @@
+#%RAML 1.0
+title: API Template
+description: API Template for starting
+version: v1
+mediaType: application/json
+
+uses: 
+  ResponseTypes: ../library/datatypes/ResponseTypeLibrary.raml
+
+traits:
+  PingResponse: !include traits/PingResponseTrait.raml
+
+types:
+  ErrorResponse: ResponseTypes.ErrorResponse
+  PingResponse: ResponseTypes.PingResponse
+  SuccessMessage: ResponseTypes.SuccessResponse
+
+/ping:
+  displayName: Ping
+  get:
+    is: [ PingResponse ]
+    description: Get the current health status of this API

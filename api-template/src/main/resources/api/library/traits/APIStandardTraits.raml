@@ -1,0 +1,85 @@
+#%RAML 1.0 Library
+usage: Use the following traits for the APIs
+
+traits:
+  cacheable: 
+    usage: Apply this trait to any GET method that supports caching control
+    responses: 
+      200:
+        headers: 
+          Cache-Control:
+            description: |
+              Activates caching and defines caching behavior through cache response directives.
+              Usually defines public or private (cacheable by proxy or not) and max-age for
+              resource.
+              See http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html for more information.
+            example: private, max-age=31536000
+          Expires:
+            description: |
+              Sets a date in RFC 1123 format which the cached resources should no longer 
+              be considered valid. If both the Expires header and max-age in the Cache-Control 
+              header are set, max-age will take precedence.
+            type: datetime
+            example: Tue, 18 Apr 2017 09:30:41 GMT
+            format: rfc2616
+
+  protocol-required:
+    protocols:
+      - HTTP
+      - HTTPS
+
+  secure-protocol-required:
+    protocols:
+     - HTTPS
+	 
+  content-type-required:
+    headers:
+      Content-Type:
+        type: string
+        example: application/json
+
+  content-length-required:
+    headers:
+      Content-Length:
+        type: integer
+        example: 20
+
+  last-modified-required:
+    headers:
+      Last-Modified:
+        type: datetime
+        example: Sun, 28 Feb 2016 16:41:41 GMT
+        format: rfc2616
+
+  accept-required:
+    headers:
+      Accept:
+        description: Specify the melyc type of the response to be returned
+        type: string
+        example: application/json
+
+  x-client-correlation-id:
+    headers:
+      x-client-correlation-id:
+        displayName: Caller Correlation Id
+        description: A unique transaction identifier sent by the caller/calling application that can be used for tracing purposes
+        type: string
+        example: e733ab0a-6da5-11e8-adc0-fa7ae01bbebc
+
+  x-correlation-id:
+    headers:
+      x-correlation-id:
+        displayName: Internal Correlation Id
+        description: A unique transaction identifier generated in MuleSoft by the experience api that can be used for tracing purposes
+        type: string
+        example: e733ab0a-6da5-11e8-adc0-fa7ae01bbebc
+
+  locatable:
+    description: Use this header to optionally pass a tracking information to this API, for end-to-end traceability of the operation/transaction.
+    responses:
+      201:
+        headers:
+          Location:
+            description: Relative URI of the newly-created resource
+            type: string
+            example: "/customers/95830940"
