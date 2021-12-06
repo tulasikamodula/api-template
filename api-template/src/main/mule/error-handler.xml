@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<mule xmlns:json-logger="http://www.mulesoft.org/schema/mule/json-logger" xmlns:error-handler-plugin="http://www.mulesoft.org/schema/mule/error-handler-plugin"
+<mule
+	xmlns:json-logger="http://www.mulesoft.org/schema/mule/json-logger"
+	xmlns:error-handler-plugin="http://www.mulesoft.org/schema/mule/error-handler-plugin"
 	xmlns="http://www.mulesoft.org/schema/mule/core"
-	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/error-handler-plugin http://www.mulesoft.org/schema/mule/error-handler-plugin/current/mule-error-handler-plugin.xsd
 http://www.mulesoft.org/schema/mule/json-logger http://www.mulesoft.org/schema/mule/json-logger/current/mule-json-logger.xsd">
-	
-	<error-handler>
-			<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="7a30c2cb-a721-4ff1-afc7-2c526b05c7c3" >
-				<json-logger:logger doc:name="Log Exception" doc:id="9e3d3696-6a0f-4b33-86d4-ddf103243e3a" config-ref="json_logger_config" priority="ERROR" tracePoint="EXCEPTION" message="An error has occured"/>
-				<error-handler-plugin:on-error doc:name="Interpret Error" doc:id="b82c31d2-cbb0-4e4e-84ab-93aa1e7d69b6" config-ref="error_handler_plugin_config"/>
-				<set-variable value="#[attributes.httpStatus]" doc:name="Set Status" doc:id="e31bd409-02ad-4995-a7be-91143fdf6bd3" variableName="httpStatus"/>
-				<json-logger:logger doc:name="Log End with Exception" doc:id="5ddb4e9f-3c8d-4984-8635-cba0aaf43fc7" config-ref="json_logger_config" priority="ERROR" tracePoint="END" message="Finished with Error"/>
-			</on-error-propagate>
-            
-        </error-handler>
-	
-	</mule>
+	<error-handler name="Error_Handler" doc:id="376e4fde-9d06-43a3-b884-73264e1a0a96" >
+		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="7a30c2cb-a721-4ff1-afc7-2c526b05c7c3">
+			<json-logger:logger doc:name="Log Exception" doc:id="9e3d3696-6a0f-4b33-86d4-ddf103243e3a" config-ref="json_logger_config" priority="ERROR" tracePoint="EXCEPTION" message="An error has occured" />
+			<error-handler-plugin:on-error doc:name="Interpret Error" doc:id="b82c31d2-cbb0-4e4e-84ab-93aa1e7d69b6" config-ref="error_handler_plugin_config" />
+			<set-variable value="#[attributes.httpStatus]" doc:name="Set Status" doc:id="e31bd409-02ad-4995-a7be-91143fdf6bd3" variableName="httpStatus" />
+			<json-logger:logger doc:name="Log End with Exception" doc:id="5ddb4e9f-3c8d-4984-8635-cba0aaf43fc7" config-ref="json_logger_config" priority="ERROR" tracePoint="END" message="Finished with Error" />
+		</on-error-propagate>
+	</error-handler>
+
+</mule>

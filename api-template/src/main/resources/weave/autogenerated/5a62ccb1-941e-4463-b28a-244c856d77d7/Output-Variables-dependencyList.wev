@@ -1,0 +1,4 @@
+%dw 2.0
+
+type auto_5a62ccb1_941e_4463_b28a_244c856d77d7_Output_Variables_dependencyList = String | Null
+

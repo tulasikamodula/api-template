@@ -5,7 +5,7 @@
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/json-logger http://www.mulesoft.org/schema/mule/json-logger/current/mule-json-logger.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
-	<flow name="get:\someresource\subresource1:api-impl" doc:id="18351123-d8d4-4ab4-9dc1-5d79a6f258ad" >
+	<flow name="get:\someflow-impl" doc:id="18351123-d8d4-4ab4-9dc1-5d79a6f258ad" >
 		<json-logger:logger doc:name="Log Start" doc:id="efb7baf6-bd4a-42a8-891a-9e5ab0860cb3" config-ref="json_logger_config" message="Start"/>
 		<set-payload value="#['{&quot;key&quot;:&quot;input-date&quot;}']" doc:name="MOCK: Input Request" doc:id="a8b24275-c39a-4154-bff8-bc4c9aee9184" />
 		<json-logger:logger doc:name="Log Before Calling API/Backend" doc:id="7c16aee1-1b99-4bc6-aa47-feb467e32add" config-ref="json_logger_config" tracePoint="BEFORE_REQUEST" message="Before Calling API or Backend"/>

@@ -5,10 +5,10 @@ version: v1
 mediaType: application/json
 
 uses: 
-  ResponseTypes: ../library/datatypes/ResponseTypeLibrary.raml
+  ResponseTypes: /library/datatypes/ResponseTypeLibrary.raml
 
 traits:
-  PingResponse: !include traits/PingResponseTrait.raml
+  PingResponse: !include /traits/PingResponseTrait.raml
 
 types:
   ErrorResponse: ResponseTypes.ErrorResponse

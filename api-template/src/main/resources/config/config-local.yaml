@@ -3,7 +3,7 @@ api:
   name: "${project.artifactId}"
   version: "${project.version}"
   # Replace with respective autodiscovery id
-  autodiscoveryID: "16422504"
+  autodiscoveryID: ""
 
 # Listener configuration
 https:
