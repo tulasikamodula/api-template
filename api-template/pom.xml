@@ -9,6 +9,7 @@
 
 	<name>api-template</name>
 
+	<description>Sample API implementaion template</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -39,7 +40,6 @@
 				<extensions>true</extensions>
 				<configuration>
 					<filterAppDirectory>true</filterAppDirectory>
-					<classifier>mule-application</classifier>
 				</configuration>
 			</plugin>
 			<plugin>
