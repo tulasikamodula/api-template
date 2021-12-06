@@ -8,8 +8,8 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
     <http:listener-config name="httpListenerConfig">
         <http:listener-connection host="0.0.0.0" port="8081" />
     </http:listener-config>
-    <!-- <apikit:config name="api-config" raml="api/raml-api-template.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" api="api/raml-api-template.raml"/>
-	 --><json-logger:config name="json_logger_config" doc:name="JSON Logger Config" doc:id="bf1bc03f-3b97-4896-8aa6-18404829e5dc" disabledFields="${json.logger.disabled.fields}" environment="${mule.env}" applicationName="${api.name}" applicationVersion="${api.version}"/>
+    <apikit:config name="raml-api-template-config" api="raml-api-template.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+	 <json-logger:config name="json_logger_config" doc:name="JSON Logger Config" doc:id="bf1bc03f-3b97-4896-8aa6-18404829e5dc" disabledFields="${json.logger.disabled.fields}" environment="${mule.env}" applicationName="${api.name}" applicationVersion="${api.version}"/>
 	<configuration-properties doc:name="Configuration properties" doc:id="1158f115-9ab3-4462-b52f-f3329f20098d" file="config/config-${mule.env}.yaml" />
 	<secure-properties:config name="secure_properties_config" doc:name="Secure Properties Config" doc:id="b0f21160-ef6b-4985-ade7-0e4cc982bca6" file="config/config-secured-${mule.env}.yaml" key="${mule.key}" />
 	<!-- <api-gateway:autodiscovery apiId="${api.autodiscoveryID}" doc:name="API Autodiscovery" doc:id="424ac292-35fb-4809-85b0-e4c29d7999bc" flowRef="api-main" ignoreBasePath="true"/>

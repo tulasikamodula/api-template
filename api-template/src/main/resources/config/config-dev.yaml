@@ -3,13 +3,12 @@ api:
   name: "${project.artifactId}"
   version: "${project.version}"
   # Replace with respective autodiscovery id
-  autodiscoveryID: "16422504"
+  autodiscoveryID: ""
 
 # Listener configuration
 https:
   host: "0.0.0.0"
   port: "8082"
-
 
 # API Configurations
 customers-prc-api:
@@ -25,7 +24,6 @@ json:
   logger:
     disabled:
       fields: "content"
-      mask: ""
 
 # Retry
 retry:
@@ -41,42 +39,3 @@ reconnection:
   amq:
     frequency: "2000"
     attempts: "2"
- 
-# AMQ configuration
-anypoint-mq:
-  # Replace with target region
-  server-url: "https://mq-ca-central-1.anypoint.mulesoft.com/api/v1"
-  customer-queue-name: "accelerator-customer-update-retail-queue"
-  customer-dl-queue-name: "accelerator-customer-update-retail-dl-queue"
-  individual-queue-name: "accelerator-individual-update-retail-queue"
-  individual-dl-queue-name: "accelerator-individual-update-retail-dl-queue"
-  ackTimeout: "1000"
-  frequency: "1000"
-  fetchSize: "10"
-  client-id:  "Client Id overridden at deploy time"  
-  client-secret: "Client secret overridden at deploy time"
-
-# MDM System API configuration
-mdm-sys:
-  # Replace with respective application hostname
-  host: "mdm-sys-api-v2-dev.us-e1.cloudhub.io"
-  port: "443"
-  base-path: "/api"
-  ping-path: "/api/ping"
-  response-timeout: "60000"
-  connection-idle-timeout: "3000"
-  http-frequency: "5000"
-  http-reconnection-attempts: "2"
-  
-# Salesforce Customers System API configuration
-salesforce-sys:
-  enabled: "true"
-  # Replace with respective application hostname
-  host: "salesforce-customers-sys-api-v2-dev.us-e1.cloudhub.io"
-  port: "443"
-  base-path: "/api"
-  ping-path: "/api/ping"
-  response-timeout: "60000"
-  connection-idle-timeout: "3000"
-  http-frequency: "5000"
-  http-reconnection-attempts: "2"
