@@ -9,16 +9,19 @@
 
 	<name>api-template</name>
 
-	<description>Sample API implementaion template</description>
+	<description>Starter API implementation template for Mule projects</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<app.runtime>4.4.0</app.runtime>
+		<app.runtime>4.4.0-20211026</app.runtime>
 		<mule.maven.plugin.version>3.5.2</mule.maven.plugin.version>
 		<mule.version>4.4.0</mule.version>
 		<mule.tools.version>1.8</mule.tools.version>
 		<munit.version>2.3.6</munit.version>
+		<apache.maven.plugin.version>3.2.0</apache.maven.plugin.version>
+		<json.logger.version>2.0.1</json.logger.version>
+		<error.handler.version>5.0.0</error.handler.version>
 	</properties>
 
 	<build>
@@ -33,6 +36,17 @@
 			</resource>
 		</resources>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${apache.maven.plugin.version}</version>
+				<configuration>
+					<nonFilteredFileExtensions>
+						<nonFilteredFileExtension>jks</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
@@ -57,29 +71,34 @@
 					</execution>
 				</executions>
 				<configuration>
+					<argLines>
+						<argLine>-Dmule.env=local</argLine>
+						<argLine>-Dmule.key=your-key</argLine>
+						<argLine>-Dhttp.port=8081</argLine>
+					</argLines>
 					<coverage>
 						<runCoverage>true</runCoverage>
-						<failBuild>false</failBuild>
-						<requiredApplicationCoverage>0</requiredApplicationCoverage>
-						<requiredResourceCoverage>0</requiredResourceCoverage>
-						<requiredFlowCoverage>0</requiredFlowCoverage>
+						<failBuild>true</failBuild>
 						<formats>
 							<format>console</format>
 							<format>html</format>
 						</formats>
+						<requiredApplicationCoverage>50</requiredApplicationCoverage>
+						<ignoreFlows>
+							<ignoreFlow>api-template-api-console</ignoreFlow>
+						</ignoreFlows>
+						<ignoreFiles>
+							<ignoreFile>global.xml</ignoreFile>
+							<ignoreFile>error-handler.xml</ignoreFile>
+						</ignoreFiles>
 					</coverage>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
-				<!-- <configuration>
-					<compilerArgs>
-						<args>-parameters</args>
-					</compilerArgs>
-					<target>1.8</target>
-				</configuration> -->
 				<configuration>
 					<compilerArgs>
 						<args>-parameters</args>
@@ -95,13 +114,13 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>json-logger</artifactId>
-			<version>2.0.1</version>
+			<version>${json.logger.version}</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>common-error-handler</artifactId>
-			<version>5.0.0</version>
+			<version>${error.handler.version}</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
 		<!-- Mule Project Modules -->
@@ -135,7 +154,7 @@
 			<version>1.2.2</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
-		<!--  MUnit libraries -->
+		<!-- MUnit libraries -->
 		<dependency>
 			<groupId>org.mule.weave</groupId>
 			<artifactId>assertions</artifactId>
@@ -162,21 +181,27 @@
 			<version>1.4.5</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
-		<!--  JUnit Splunk libraries -->
-		<dependency> 
-		   <groupId>com.splunk.logging</groupId> 
-		   <artifactId>splunk-library-javalogging</artifactId> 
-		   <version>1.7.1</version> 
-		</dependency>   
+		<!-- JUnit Splunk libraries -->
 		<dependency>
-			 <groupId>org.apache.logging.log4j</groupId>
-			 <artifactId>log4j-core</artifactId>
-			 <version>2.10.0</version>
+			<groupId>com.splunk.logging</groupId>
+			<artifactId>splunk-library-javalogging</artifactId>
+			<version>1.7.1</version>
 		</dependency>
 		<dependency>
-			 <groupId>org.apache.logging.log4j</groupId>
-			 <artifactId>log4j-api</artifactId>
-			 <version>2.10.0</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.16.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.16.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.mulesoft.connectors</groupId>
+			<artifactId>mule-salesforce-connector</artifactId>
+			<version>10.13.1</version>
+			<classifier>mule-plugin</classifier>
 		</dependency>
 	</dependencies>
 	<distributionManagement>
@@ -200,10 +225,10 @@
 			<url>https://repository.mulesoft.org/releases/</url>
 			<layout>default</layout>
 		</repository>
-		<repository> 
-		   <id>splunk-artifactory</id> 
-		   <name>Splunk Releases</name> 
-		   <url>https://splunk.jfrog.io/splunk/ext-releases-local</url> 
+		<repository>
+			<id>splunk-artifactory</id>
+			<name>Splunk Releases</name>
+			<url>https://splunk.jfrog.io/splunk/ext-releases-local</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
@@ -215,6 +240,10 @@
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>mule-public</id>
+			<url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
 		</pluginRepository>
 	</pluginRepositories>
 
