@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>aac559ba-0fea-4d2c-b189-57c47e8a3166</groupId>
 	<artifactId>api-template</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<packaging>mule-application</packaging>
 
-	<name>api-template</name>
+	<name>API Implementation Template</name>
 
 	<description>Starter API implementation template for Mule projects</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 		<app.runtime>4.4.0-20211026</app.runtime>
 		<mule.maven.plugin.version>3.5.2</mule.maven.plugin.version>
 		<mule.version>4.4.0</mule.version>
@@ -40,11 +37,6 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.0.0</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>${apache.maven.plugin.version}</version>
 				<configuration>
@@ -53,7 +45,6 @@
 					</nonFilteredFileExtensions>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
@@ -87,7 +78,7 @@
 						<runCoverage>true</runCoverage>
 						<failBuild>true</failBuild>
 						<formats>
-							<!-- <format>console</format> -->
+							<format>console</format>
 							<format>html</format>
 						</formats>
 						<requiredApplicationCoverage>50</requiredApplicationCoverage>
@@ -101,11 +92,10 @@
 					</coverage>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.8.1</version>
 				<configuration>
 					<compilerArgs>
 						<args>-parameters</args>
@@ -221,12 +211,6 @@
 	</distributionManagement>
 	<repositories>
 		<repository>
-			<id>Exchange2</id>
-			<name>Mule Repo</name>
-			<url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${project.groupId}/maven</url>
-			<layout>default</layout>
-		</repository>
-		<repository>
 			<id>anypoint-exchange-v2</id>
 			<name>Anypoint Exchange V2</name>
 			<url>https://maven.anypoint.mulesoft.com/api/v2/maven</url>
@@ -236,6 +220,12 @@
 			<id>mulesoft-releases</id>
 			<name>MuleSoft Releases Repository</name>
 			<url>https://repository.mulesoft.org/releases/</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
+			<id>Exchange2</id>
+			<name>Mule Repo</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${project.groupId}/maven</url>
 			<layout>default</layout>
 		</repository>
 		<repository>
@@ -255,5 +245,4 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
-
 </project>
