@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>1f3581c4-f166-4d42-9052-595da11542df</groupId>
+	<groupId>aac559ba-0fea-4d2c-b189-57c47e8a3166</groupId>
 	<artifactId>api-template</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>mule-application</packaging>
 
 	<name>api-template</name>
@@ -73,14 +75,14 @@
 				<configuration>
 					<argLines>
 						<argLine>-Dmule.env=local</argLine>
-						<argLine>-Dmule.key=your-key</argLine>
-						<argLine>-Dhttp.port=8081</argLine>
+						<argLine>-Dmule.key=HyVeeEncryptKey1234</argLine>
+						<argLine>-Dhttp.port=8082</argLine>
 					</argLines>
 					<coverage>
 						<runCoverage>true</runCoverage>
 						<failBuild>true</failBuild>
 						<formats>
-							<format>console</format>
+							<!-- <format>console</format> -->
 							<format>html</format>
 						</formats>
 						<requiredApplicationCoverage>50</requiredApplicationCoverage>
@@ -94,11 +96,10 @@
 					</coverage>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>3.0.0</version>
 				<configuration>
 					<compilerArgs>
 						<args>-parameters</args>
@@ -214,6 +215,12 @@
 	</distributionManagement>
 	<repositories>
 		<repository>
+			<id>Exchange2</id>
+			<name>Mule Repo</name>
+			<url>https://maven.anypoint.mulesoft.com/api/v2/organizations/${project.groupId}/maven</url>
+			<layout>default</layout>
+		</repository>
+		<repository>
 			<id>anypoint-exchange-v2</id>
 			<name>Anypoint Exchange V2</name>
 			<url>https://maven.anypoint.mulesoft.com/api/v2/maven</url>
@@ -240,10 +247,6 @@
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
-		</pluginRepository>
-		<pluginRepository>
-			<id>mule-public</id>
-			<url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
 		</pluginRepository>
 	</pluginRepositories>
 
