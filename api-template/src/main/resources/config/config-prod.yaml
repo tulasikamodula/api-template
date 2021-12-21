@@ -1,0 +1,45 @@
+# API specification
+api:
+  name: "${project.artifactId}"
+  version: "${project.version}"
+  # Replace with respective autodiscovery id
+  autodiscoveryID: ""
+
+# Listener configuration
+https:
+  host: "0.0.0.0"
+  port: "8082"
+http:
+  host: "0.0.0.0"
+  port: "8081"
+  readTimeOut: "30000"
+
+# API Configurations
+customers-prc-api:
+  http-listener:
+    path: "/api/*"
+  http-client:
+    client-id:  "Client Id overridden at deploy time"  
+    client-secret: "Client secret overridden at deploy time"
+
+### JSON Logger configuration ###
+# Indicate which fields should not be logged
+json:
+  logger:
+    disabled:
+      fields: "content"
+
+# Retry
+retry:
+  http: 
+    delayMillisecs: "3000"
+    numRetries: "3"
+  amq:
+    delayMillisecs: "3000"
+    numRetries: "3"
+    
+# Reconnection
+reconnection:
+  amq:
+    frequency: "2000"
+    attempts: "2"
