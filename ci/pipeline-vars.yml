@@ -1,0 +1,37 @@
+organization: Mule-Integrations
+repository: mulesoft-mdm-sys-api/mdm-sys-api
+pipelinee-repository: mule-concourse-pipeline
+
+github_webhook_token: 3a9a4202-a97a-4a21-bb38-dcf3d8eb0d13
+
+# Maven
+m2-settings-mule_ee_repo-username: hy.vee.nexus
+m2-settings-mule_ee_repo-password: DJpOjdyd
+m2-settings-exchange_repo-org-id: aac559ba-0fea-4d2c-b189-57c47e8a3166
+m2-settings-exchange_repo-username: ~~~Client~~~
+m2-settings-exchange_repo-password: e2bb352862fc488f975fdcc092cafaf9~?~E28e239a80F24c418af700840736480e
+
+# Platform
+anypoint-platform-url: https://anypoint.mulesoft.com
+connected-app-client-id: e2bb352862fc488f975fdcc092cafaf9
+connected-app-client-secret: E28e239a80F24c418af700840736480e
+connected-app-grant-type: client_credentials
+
+# Environment
+environment-name: DEV
+
+# Application
+application-name: hyvee-mdm-system-api-dev-v1
+application-version: 1.0.0
+
+# Settings
+mule-env-name: dev
+application-client-id: 83f91c730f244da4bf32081903f65178
+application-client-secret: 2e625a861a07492aADC9E32F57e39151
+
+
+# Deployment
+deployment-mule-runtime: 4.4.0
+deployment-workers: 1
+deployment-region: us-east-2
+deployment-worker-type: MICRO
