@@ -5,14 +5,14 @@
     </http:listener-config>
     <apikit:config name="apiTemplateConfig" api="raml-api-template.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <json-logger:config name="jsonLoggerConfig" doc:name="JSON Logger Config" doc:id="bf1bc03f-3b97-4896-8aa6-18404829e5dc" disabledFields="${json.logger.disabled.fields}" environment="${mule.env}" applicationName="${api.name}" applicationVersion="${api.version}" />
-    <configuration-properties doc:name="Configuration properties" doc:id="1158f115-9ab3-4462-b52f-f3329f20098d" file="config/config-${mule.env}.yaml" />
-    <secure-properties:config name="securePropertiesConfig" doc:name="Secure Properties Config" doc:id="b0f21160-ef6b-4985-ade7-0e4cc982bca6" file="config/config-secured-${mule.env}.yaml" key="${mule.key}">
+    <configuration-properties doc:name="Configuration properties" doc:id="1158f115-9ab3-4462-b52f-f3329f20098d" file="properties/config-${mule.env}.yaml" />
+    <secure-properties:config name="securePropertiesConfig" doc:name="Secure Properties Config" doc:id="b0f21160-ef6b-4985-ade7-0e4cc982bca6" file="properties/config-secured-${mule.env}.yaml" key="${mule.key}">
         <secure-properties:encrypt algorithm="Blowfish" />
     </secure-properties:config>
     <!-- <api-gateway:autodiscovery apiId="${api.autodiscoveryID}" doc:name="API Autodiscovery" doc:id="424ac292-35fb-4809-85b0-e4c29d7999bc" flowRef="api-main" ignoreBasePath="true"/>
 	 -->
     <error-handler-plugin:config name="errorHandlerPluginConfig" doc:name="Error Handler Plugin Config" doc:id="4abe4f7d-df39-4e9e-a183-5cabb14d89d7" />
     <global-property doc:name="Global Property" doc:id="2ba037c3-3033-4c21-8b84-b03d60a75b6a" name="mule.env" value="local" />
-    <global-property doc:name="Global Property" doc:id="fc6b6fdd-eb52-4bc0-99b4-ce23789317d8" name="mule.key" value="HyVeeEncryptKey1234" />
+    <global-property doc:name="Global Property" doc:id="fc6b6fdd-eb52-4bc0-99b4-ce23789317d8" name="mule.key" value="DefaultEncryptKey1234" />
     <configuration doc:name="Configuration" doc:id="ed5bb9ba-527e-4580-a945-000ef44dc490" defaultErrorHandler-ref="Error_Handler" />
 </mule>

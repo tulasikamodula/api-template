@@ -1,1 +1,11 @@
-{"minMuleVersion":"4.4.0"}
+{
+	"minMuleVersion": "4.4.0",
+	"secureProperties": [
+	    "mule.key",
+	   	"anypoint.platform.client_secret",
+	    "secure::https.certificate.alias",
+	    "secure::https.certificate.storePassword",
+	    "secure::https.certificate.keyPassword",
+	    "secure::amq.exchange.client-secret"
+	  ]
+}

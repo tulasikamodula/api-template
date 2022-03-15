@@ -8,23 +8,12 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<sub-flow name="ping_get-health" doc:id="5a62ccb1-941e-4463-b28a-244c856d77d7" >
 		<set-variable value='#[attributes.queryParams.checkDependencies == "true" default false]' doc:name="checkDependencies" doc:id="c11d190c-79e0-4855-9a91-74821630234a" variableName="checkDependencies"/>
-		<choice doc:name="Choice" doc:id="8c8836f2-e6d2-4909-81ac-26a6be4d9256" >
-			<when expression="#[vars.checkDependencies]">
-				<flow-ref doc:name="Check Dependencies" doc:id="ba87c197-1b90-4033-881c-4bda99c6da7a" name="ping_check-dependencies" target="dependencyList"/>
-			</when>
-			<otherwise>
-				<set-variable doc:name="dependencyList" doc:id="699dc75f-da5c-4792-85ab-898abeb3720b" variableName="dependencyList" value="#[null]"/>
-			</otherwise>
-		</choice>
 		<ee:transform doc:name="Map Response" doc:id="27249c17-4f15-41c8-8fa4-0a038c793868">
 					<ee:message>
-				<ee:set-payload resource="dwl/ping-response-payload.dwl" />
+				<ee:set-payload resource="dwl/p-ping-response-payload.dwl" />
 					</ee:message>
 				</ee:transform>
 		<set-variable value="200" doc:name="httpStatus" doc:id="66a989d7-878a-487a-99bb-50dc8dc07edc" variableName="httpStatus"/>
-	</sub-flow>
-	<sub-flow name="ping_check-dependencies" doc:id="bdf9dc6e-ae10-4acf-94e8-ccc701d918ee" >
-		<set-payload value='#["No Dependencies	"]' doc:name="Set Payload" doc:id="208d80ba-768f-4967-96a2-d445c08eb570" />
 	</sub-flow>
 		
 	

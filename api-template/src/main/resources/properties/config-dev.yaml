@@ -7,15 +7,22 @@ api:
 
 # Listener configuration
 https:
-  host: "0.0.0.0"
   port: "8082"
+  private:
+    port: "8092"
+  host: "0.0.0.0"
+  readTimeOut: "30000"
+  certificate:
+    path: "certificate/mule-server-keystore.jks"
 http:
   host: "0.0.0.0"
+  private:
+    port: "8091"
   port: "8081"
   readTimeOut: "30000"
 
 # API Configurations
-customers-prc-api:
+sample-prc-api:
   http-listener:
     path: "/api/*"
   http-client:
@@ -39,7 +46,14 @@ retry:
     numRetries: "3"
     
 # Reconnection
-reconnection:
-  amq:
+amq:
+  exchange:
+    url: "https://mq-us-east-1.anypoint.mulesoft.com/api/v1"
+    name: "ex-trade-account-registration"
+  connection:
+    timeout: "30000"
+  reconnection:
     frequency: "2000"
     attempts: "2"
+  delivery:
+    delayMillisecs: "0"

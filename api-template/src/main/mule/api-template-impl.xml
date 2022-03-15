@@ -24,5 +24,27 @@ payload]]></ee:set-payload>
 		</ee:transform>
 		<json-logger:logger doc:name="Log After Transform" doc:id="17afc3a3-76b1-4440-af0e-6533db89a665" config-ref="jsonLoggerConfig" tracePoint="AFTER_TRANSFORM" message="After Interpreting Response"/>
 		<json-logger:logger doc:name="Log End" doc:id="60394448-d828-4da9-b7cd-95a0bfc8b3da" config-ref="jsonLoggerConfig" tracePoint="END" message="End"/>
-	</flow> 
+	</flow>
+	    <flow name="get:\ping:apiTemplateConfig">
+        <flow-ref doc:name="Flow Reference" doc:id="b764cebb-55aa-416c-ad39-7703ae549193" name="ping_get-health"/>
+		<ee:transform xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+            <ee:message>
+                <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+  status: "OK",
+  apiName: "accelerator-salesforce-sys-api",
+  apiVersion: "1.3.0",
+  timestamp: "2020-08-01T13:15:25.000Z",
+  dependencies: [
+    {
+      name: "Salesforce",
+      status: "UP"
+    }
+  ]
+}]]></ee:set-payload>
+            </ee:message>
+        </ee:transform>
+    </flow>
 </mule>
